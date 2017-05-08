@@ -1,0 +1,11 @@
+In this paper we describe how we have implemented remote function calls in the
+HPX library for task-based multithreaded distributed C++ applications targeting
+both HPC and conventional users.
+The use of strongly typed syntax and template techniques available in the language 
+allows the compiler to perform transformations on the user's code that enable 
+high performance serialization of functions and their arguments, 
+reduction of memory copies between user code and the network layer, 
+and the integration of RMA semantics; all within a simple, expressive and unified API.
+We demonstrate the utility and performance of our implementation with benchmarks
+and integration into an astrophysics simulation on a large supercomputer.
+
