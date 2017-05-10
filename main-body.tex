@@ -1,0 +1,130 @@
+% -------------------------------------------------------------------
+\section{Introduction}
+
+%\IEEEPARstart 
+Progress in semiconductor technology in recent decades has produced significant 
+improvements in processor speeds and concomitant increases in the number of 
+processing cores per chip, but memory access time has lagged behind and 
+has become one of the main performance bottlenecks in many applications. 
+It is therefore of paramount importance to minimize
+unnecessary data movement in order to maximize the throughput of more
+compute intensive portions of code. 
+Additionally, in distributed applications, time spent waiting for results/data 
+that must be delivered from remote nodes is one of the biggest obstacles
+to scalability on current systems.
+
+The task-based runtime runtime system, HPX is designed to execute 
+tasks asynchronously, with tasks only running when the dependencies they
+require are available. 
+This makes latency hiding automatic since data delivery from remote nodes
+is just another task and any others that require the data are scheduled
+to run only when it becomes available - 
+other tasks that are in the queues (and are not dependent on missing data) 
+are scheduled to execute first - providing the user is able to divide 
+the algorithm into as many independent tasks as possible, 
+then it is (in principle) possible to keep all processing units fully 
+loaded with work and achieve near ideal throughput.
+
+Unfortunately, it is not always possible to subdivide work into entirely
+independent tasks and achieve perfect overlap of communication and computation.
+Portions of the task DAG that depend on remote data and in turn generate new data
+are algorithm dependent and cannot be avoided entirely in every case. 
+When dependencies such as these exist, it is the responsibility of the runtime
+system to provide a messaging implementation that delivers the best possible
+performance.
+
+One of the most significant additions to the C++ programming language in C++11
+was the introduction of \lstinline!std::move!
+and the concept of \lstinline!rvalues! and the universal reference 
+\lstinline!&&! modifier.
+Move semantics allow the programmer greater control of memory by providing 
+a syntax that allows temporary variables (\lstinline!rvalues!) to be moved
+into permanent ones (\lstinline!lvalues!), as well as explicitly permitting 
+data to be moved from one variable to another and invalidating the source.
+A matrix class with an overloaded multipliction operator and 
+a move constructor can be used
+as \lstinline!A = B*C!, with the temporary result of \lstinline!B*C! being 
+\textit{moved} into the variable \lstinline!A! without a wasted memory copy.
+We aim to extend these kind of operations to the network layer so that
+distributed applications can invoke remote functions (\textit{actions})
+and wherever possible avoid excessive copies into the network layer and 
+back out again (at both ends).
+
+
+% -------------------------------------------------------------------
+\section{Related work}
+\jbtodo{Everybody, talk about other task frameworks, about rma 
+(mercury for example), about RPC frameworks and all the other 
+serialization libraries}
+
+% -------------------------------------------------------------------
+\section{HPX parcelport implementation}
+\hartmuttodo{intro section on the parcelport/parcelset framework}
+
+% -------------------------------------------------------------------
+\subsection{Serialization}
+HPX has a highly optimized serialization layer that is essential to minimize
+the time taken to convert arguments into 'parcels' that can be transmitted
+over the network. Active messages require extra features to encode the type
+of function to be executed on the remote end
+
+\antontodo{Could we include the graph you made of HPX versus everyone else 
+for serializing stuf. Rrecent improvements to the parcel serialization should warrant a new graph
+as there are some fixes to traits etc, }
+
+\thomastodo{talk about traits::is\_bitwise\_serializable and how this compares to mpi datatypes, boost serialization, etc}
+
+discuss array optimizations etc
+
+% -------------------------------------------------------------------
+\subsection{Zero copy messaging}
+\jbtodo{How we use rendezvous protocol to get decent performance instead of using the underlying mpi pp}
+\thomastodo{feel free to write this if you are free :)}
+
+% -------------------------------------------------------------------
+\subsection{RMA types}
+\jbtodo{The rendezvous protocol is great, but we still have to register memory on the fly
+and this takes time. If we had preregistered memory from a custom allocator ....}
+Existing memory registration frameworks are built into libraries like MPI and LibF and do not give the user direct control ... They are difficult to use, 
+not exposed via a normal API (usually bash export vars etc) 
+
+% -------------------------------------------------------------------
+\subsection{Direct actions}
+The interface between the task based runtime and the need to execute things without going onto the queues.
+Discuss.
+
+% -------------------------------------------------------------------
+\subsection{Flow control}
+Things like direct actions can cause problems when a background task suspends. It needs to be
+converted into a task-task. 
+How do we stop JB's network test from creating millions of network tasks and overloading the network layer. 
+Suspend the task injecting work etc. tricky since we might still have deadlocks we haven't fixed.
+
+% -------------------------------------------------------------------
+\subsection{Parcel coalescing}
+There's a good paper on this by Lumsdaine, we simply say that this helps a lot.
+We include graphs of octotiger with mpi/LF and then both with coalescing in
+
+
+% -------------------------------------------------------------------
+\section{Results}
+Octotiger. osu benchmarks
+
+\begin{figure*}[ht]
+  \def\svgwidth{\columnwidth}
+  \resizebox{0.99\textwidth}{!}
+    {\input{images/daint-2017-05-10-fig_level-grids.pdf_tex}}
+  \caption{Example} 
+  \label{fig:octotiger-parcelports}
+\end{figure*}
+
+
+
+% -------------------------------------------------------------------
+\section{Conclusion}
+Our stuff works well.
+
+
+% -------------------------------------------------------------------
+\section*{Acknowledgment}
+The authors would like to thank...
