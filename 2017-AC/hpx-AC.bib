@@ -523,12 +523,12 @@
   note		= {http://www.boost.org/doc/libs/1\_59\_0/doc/html/mpi.html}
 }
 
-@Misc{		  boostcpplibraries,
-  title		= {{Boost: a collection of free peer-reviewed portable C++
-		  source libraries}},
-  year		= {1998-2015},
-  url		= {http://www.boost.org/},
-  note		= {http://www.boost.org/}
+@Misc{boostcpplibraries,
+  author = {Boost},
+  title  = {{Boost: a collection of free peer-reviewed portable C++ source libraries}},
+  year   = {1998-2017},
+  note   = {http://www.boost.org/},
+  url    = {http://www.boost.org/},
 }
 
 @Misc{		  boostodeint,
@@ -4216,6 +4216,80 @@ booktitle = {American Astronomical Society Meeting Abstracts},
   acmid     = {165874},
   address   = {New York, NY, USA},
   numpages  = {18},
+}
+
+@InProceedings{Choi:2015:IOL:2865660.2866361,
+  author    = {Choi, Sung-Eun and Pritchard, Howard and Shimek, James and Swaro, James and Tiffany, Zachary and Turrubiates, Ben},
+  title     = {An Implementation of OFI Libfabric in Support of Multithreaded PGAS Solutions},
+  booktitle = {Proceedings of the 2015 9th International Conference on Partitioned Global Address Space Programming Models},
+  year      = {2015},
+  series    = {PGAS '15},
+  publisher = {IEEE Computer Society},
+  isbn      = {978-1-5090-0185-9},
+  pages     = {59--69},
+  doi       = {10.1109/PGAS.2015.14},
+  url       = {http://dx.doi.org/10.1109/PGAS.2015.14},
+  acmid     = {2866361},
+  address   = {Washington, DC, USA},
+  keywords  = {libfabric, networking, communication li- braries, interconnects},
+  numpages  = {11},
+}
+
+@InProceedings{mvapich2,
+  author     = {W. Huang, G. Santhanaraman, H. Jin, Q. Gao, D. Panda},
+  title      = {Design and Implementation of High Performance MVAPICH2: MPI2 over InfiniBand},
+  year       = {2007},
+  location   = { Rio de Janeiro, Brazil },
+  month      = {May},
+  conference = { International Sympsoium on Cluster Computing and the Grid },
+  source     = { http://nowlab.cse.ohio-state.edu/publications/ },
+}
+
+@Book{El-Ghazawi:2003:UDS:1076294,
+  author    = {El-Ghazawi, Tarek and Carlson, William and Sterling, Thomas and Yelick, Katherine},
+  title     = {UPC: Distributed Shared-Memory Programming},
+  year      = {2003},
+  publisher = {Wiley-Interscience},
+  isbn      = {0471220485},
+}
+
+@WWW{cereal,
+  author = {Grant, W. Shane and Voorhies, Randolph},
+  title  = {cereal - A C++11 library for serialization},
+  year   = {2017},
+  url    = {http://uscilab.github.io/cereal/},
+}
+
+@Misc{protobuf,
+  author       = {Google and Kenton Varda},
+  title        = {Protocol Buffers},
+  year         = {2017},
+  howpublished = {\url{http://code.google.com/apis/protocolbuffers/}},
+}
+
+@TechReport{Slee2007,
+  author      = {Agarwal, Aditya and Slee, Mark and Kwiatkowski, Marc},
+  title       = {Thrift: Scalable Cross-Language Services Implementation},
+  institution = {Facebook},
+  year        = {2007},
+  month       = {4},
+  url         = {http://thrift.apache.org/static/files/thrift-20070401.pdf},
+  abstract    = {Thrift is a software library and set of code-generation tools developed at Facebook to expedite development and implementation of efficient and scalable backend services. Its primary goal is to enable efficient and reliable communication across programming languages by abstracting the portions of each language that tend to require the most customization into a common library that is implemented in each language. Specifically, Thrift allows developers to define datatypes and service interfaces in a single language-neutral file and generate all the necessary code to build RPC clients and servers.^M
+^M
+This paper details the motivations and design choices we made in Thrift, as well as some of the more interesting implementation details. It is not intended to be taken as research, but rather it is an exposition on what we did and why.},
+  added-at    = {2009-11-02T17:24:36.000+0100},
+  biburl      = {https://www.bibsonomy.org/bibtex/22593c1a9666cfc633d674051d887c8e3/voj},
+  interhash   = {105e59dd8576a9d92bb7db1ecc7e4980},
+  intrahash   = {2593c1a9666cfc633d674051d887c8e3},
+  keywords    = {Thrift datamodeling language specification},
+  timestamp   = {2013-01-05T23:50:40.000+0100},
+}
+
+@Misc{flatbuffers,
+  author       = {{Google, Inc}},
+  title        = {{Cross Platform Serialization Library}},
+  year         = {2017},
+  howpublished = {http://google.github.io/flatbuffers/},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

@@ -1,0 +1,50 @@
+thrift-binary: version = 0.9.3
+thrift-binary: size = 17017 bytes
+thrift-binary: time = 15518 milliseconds
+
+thrift-compact: version = 0.9.3
+thrift-compact: size = 11597 bytes
+thrift-compact: time = 23117 milliseconds
+
+protobuf: version = 2006000
+protobuf: size = 12571 bytes
+protobuf: time = 17196 milliseconds
+
+capnproto: version = 5002
+capnproto: size = 17768 bytes
+capnproto: time = 31 milliseconds
+
+boost: version = 106100
+boost: size = 17470 bytes
+boost: time = 8663 milliseconds
+
+msgpack: version = 1.1.0
+msgpack: size = 11802 bytes
+msgpack: time = 28608 milliseconds
+
+cereal: size = 17416 bytes
+cereal: time = 6694 milliseconds
+
+avro: size = 12288 bytes
+avro: time = 24406 milliseconds
+
+hpx: version = 1.1.0
+hpx: size    = 17433 bytes
+hpx: time = 5923 milliseconds
+
+hpx_zero_copy: version = 1.1.0
+hpx_zero_copy: size    = 9433 bytes
+hpx_zero_copy: time = 4256 milliseconds
+
+mpi: version = 2.0.1
+mpi: size    = 13008 bytes
+mpi: time = 8709 milliseconds
+
+yas: size = 17423 bytes
+yas: time = 6002 milliseconds
+
+flatbuffers: version = 1.0.0
+flatbuffers: size    = 17632 bytes
+flatbuffers: time = 9630 milliseconds
+
+
