@@ -75,7 +75,7 @@ for csvfile in args :
           # this allows us to store param1, param2, param3, {x,y}
           # combinations of params cen be plotted against each other
           # by rearranging the map levels and {x,y} vars.
-          insert_safe(G1, Coalesce, Network, Level, [Nodes, grids_per_sec])
+          insert_safe(G1, None, Network, Level, [Nodes, grids_per_sec])
           insert_safe(G2, Network, Coalesce, Level, [Nodes, grids_per_sec])
           insert_safe(G3, Network, Level, Coalesce, [Nodes, grids_per_sec])
 
@@ -130,14 +130,14 @@ graphs_to_save.append([F1,"fig_level-grids"])
 ##-------------------------------------------------------------------
 F2 = plot_configuration(speedup_result,
   ["Speedup", "Coalesce", "Level"],
-  ["Nodes", "Grids/s"],
+  ["Nodes", "Speedup Libfabric/MPI"],
   lambda x: str(x),                               # Plot title
   lambda x: str(x)+" ",                           # Legend text
-  lambda x: "Speedup Libfabric/MPI",                          # legend title
+  lambda x: "",                          # legend title
   lambda y,pos: str(float(y)),                      # Y Axis labels
   lambda x,pos: str(int(x)),                      # X Axis labels
-  [[2, 5, 11, 0.1], [0, 0.0, 2.0, 0.1]],             # minmax (base, min, max, padding)
-  [0.0, 0.0]                                      # legend offset
+  [[2, 5, 11, 0.1], [0, 0.5, 2.0, 0.1]],             # minmax (base, min, max, padding)
+  [-0.5, 0.05]                                      # legend offset
   )
 graphs_to_save.append([F2,"fig_speedup"])
 
